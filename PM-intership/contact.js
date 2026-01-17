@@ -7,9 +7,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   const message = document.getElementById("message").value.trim();
   const errorBox = document.getElementById("errorBox");
 
-  errorBox.innerHTML = ""; // Clear previous errors
+  errorBox.innerHTML = ""; 
 
-  // ----- Get signup data from localStorage -----
   const savedUser = JSON.parse(localStorage.getItem("user"));
 
   if (!savedUser) {
@@ -17,7 +16,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // ----- 1) NAME VALIDATION -----
+  
   const nameRegex = /^[A-Za-z ]+$/;
 
   if (!nameRegex.test(name)) {
@@ -30,7 +29,6 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // ----- 2) EMAIL VALIDATION -----
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email)) {
@@ -43,19 +41,19 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // ----- 3) SUBJECT VALIDATION -----
+ 
   if (subject.length < 10) {
     errorBox.innerHTML = "Subject must be at least 10 characters.";
     return;
   }
 
-  // ----- 4) MESSAGE VALIDATION -----
+ 
   if (message.length < 150) {
     errorBox.innerHTML = "Message must be at least 150 characters long.";
     return;
   }
 
-  // ----- SUCCESS -----
+ 
   alert("Thank you, " + name + "! Your message has been sent successfully.");
   document.getElementById("contactForm").reset();
 });
