@@ -1,6 +1,6 @@
 const container = document.getElementById("applicationList");
 
-// ===================== LOAD APPLICATIONS =====================
+
 async function loadApplications() {
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -28,7 +28,6 @@ async function loadApplications() {
   }
 }
 
-// ===================== RENDER CARDS =====================
 function renderApplications(list) {
 
   if (list.length === 0) {
@@ -61,20 +60,17 @@ function renderApplications(list) {
 
 }
 
-// ===================== VIEW DETAILS =====================
 async function viewDetails(internship_id) {
 
   try {
 
-    // Fetch full internship details
     const res = await fetch(`http://127.0.0.1:5000/internships/details/${internship_id}`);
     const data = await res.json();
 
     if (data.status === "success") {
 
       localStorage.setItem("selectedInternship", JSON.stringify(data.internship));
-
-      // Redirect
+      
       window.location.href = "internship-details.html";
 
     } else {
@@ -87,7 +83,6 @@ async function viewDetails(internship_id) {
   }
 }
 
-// ===================== WITHDRAW =====================
 async function withdraw(appId) {
 
   if (!confirm("Are you sure you want to withdraw this application?")) return;
@@ -112,12 +107,10 @@ async function withdraw(appId) {
   }
 }
 
-// ===================== LOGOUT =====================
 function logout() {
   localStorage.clear();
   showToast("You have been logged out!");
   window.location.href = "login.html";
 }
 
-// ===================== INIT =====================
 loadApplications();
