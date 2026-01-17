@@ -4,8 +4,6 @@ import random, string
 
 auth = Blueprint("auth", __name__)
 
-
-# ------------------ SIGNUP ---------------------
 @auth.route('/signup', methods=['POST'])
 def signup():
     mysql = current_app.config.get("MYSQL")
@@ -22,8 +20,7 @@ def signup():
         return jsonify({"status": "error", "message": "All fields required"}), 400
 
     cur = mysql.connection.cursor()
-
-    # Check existing user
+r
     cur.execute("SELECT id FROM users WHERE email=%s", (email,))
     existing = cur.fetchone()
     if existing:
@@ -41,9 +38,6 @@ def signup():
 
     return jsonify({"status": "success", "message": "Signup successful"}), 201
 
-
-
-# ------------------ LOGIN ----------------------
 @auth.route('/login', methods=['POST'])
 def login():
     mysql = current_app.config.get("MYSQL")
@@ -78,11 +72,6 @@ def login():
         }
     }), 200
 
-
-
-
-
-# ------------------ FORGOT PASSWORD ----------------------
 @auth.route("/forgot", methods=["POST"])
 def forgot_password():
     mysql = current_app.config.get("MYSQL")
@@ -102,15 +91,12 @@ def forgot_password():
             cur.close()
             return jsonify({"status": "error", "message": "Email not registered"}), 404
 
-        # create reset token
         token = "".join(random.choices(string.ascii_letters + string.digits, k=32))
 
         cur.execute("UPDATE users SET reset_token=%s WHERE email=%s", (token, email))
         mysql.connection.commit()
         cur.close()
 
-        # 👉 yaha real project me email send hota
-        # but abhi testing ke liye: terminal me print
         print("\n🔗 RESET LINK => http://127.0.0.1:5501/reset.html?token=" + token)
 
         return jsonify({"status": "success", "message": "Reset link sent to your email"})
@@ -119,10 +105,6 @@ def forgot_password():
         print("FORGOT ERROR => ", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-
-
-# ------------------ RESET PASSWORD ----------------------
 @auth.route("/reset", methods=["POST"])
 def reset_password():
     mysql = current_app.config.get("MYSQL")
