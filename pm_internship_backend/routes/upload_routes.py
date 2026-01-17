@@ -10,8 +10,6 @@ ALLOWED_PDF = {'pdf'}
 def allowed_file(filename, allowed_exts):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_exts
 
-
-# ------------ PROFILE PHOTO UPLOAD -------------
 @upload.route("/photo/<int:user_id>", methods=["POST"])
 def upload_photo(user_id):
     mysql = current_app.config["MYSQL"]
@@ -32,7 +30,6 @@ def upload_photo(user_id):
     filepath = os.path.join(folder, filename)
     file.save(filepath)
 
-    # Update DB
     cur = mysql.connection.cursor()
     cur.execute("UPDATE users SET photo=%s WHERE id=%s", (filename, user_id))
     mysql.connection.commit()
@@ -44,9 +41,6 @@ def upload_photo(user_id):
         "url": f"/uploads/photos/{filename}"
     }), 200
 
-
-
-# ------------ RESUME UPLOAD -------------
 @upload.route("/resume/<int:user_id>", methods=["POST"])
 def upload_resume(user_id):
     mysql = current_app.config["MYSQL"]
@@ -67,7 +61,6 @@ def upload_resume(user_id):
     filepath = os.path.join(folder, filename)
     file.save(filepath)
 
-    # Update DB
     cur = mysql.connection.cursor()
     cur.execute("UPDATE users SET resume=%s WHERE id=%s", (filename, user_id))
     mysql.connection.commit()
