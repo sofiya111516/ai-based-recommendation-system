@@ -1,11 +1,6 @@
-// ===================== ELEMENTS =====================
+
 const container = document.getElementById("internshipContainer");
-
-// Local cache for details
 let internshipsCache = [];
-
-
-// ===================== FETCH INTERNSHIPS =====================
 async function loadInternships() {
   try {
     const res = await fetch("http://127.0.0.1:5000/internships/"); // FIXED URL
@@ -24,9 +19,6 @@ async function loadInternships() {
     container.innerHTML = `<p>⚠️ Server error</p>`;
   }
 }
-
-
-// ===================== RENDER CARDS =====================
 function renderInternships(list) {
   container.innerHTML = ""; // clear loading text
 
@@ -53,12 +45,8 @@ function renderInternships(list) {
   addListeners();
 }
 
-
-
-// ===================== BUTTON LISTENERS =====================
 function addListeners() {
 
-  // View details
   document.querySelectorAll(".view-btn").forEach(btn => {
     btn.addEventListener("click", e => {
       const id = e.target.dataset.id;
@@ -70,7 +58,6 @@ function addListeners() {
     });
   });
 
-  // Apply now
   document.querySelectorAll(".apply-btn").forEach(btn => {
     btn.addEventListener("click", e => {
       applyInternship(e.target.dataset.id);
@@ -78,9 +65,6 @@ function addListeners() {
   });
 }
 
-
-
-// ===================== APPLY INTERNSHIP =====================
 async function applyInternship(internshipId) {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -115,8 +99,5 @@ async function applyInternship(internshipId) {
   }
 }
 
-
-
-// ===================== INIT =====================
 loadInternships()
   .then(() => console.log("Internships loaded"));
