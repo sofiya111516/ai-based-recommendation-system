@@ -9,7 +9,7 @@ body {
   background-color: #f8fafc;
 }
 
-/* Navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -57,7 +57,7 @@ body {
   font-weight: 600;
 }
 
-/* Applications section */
+
 .applications {
   padding: 60px 80px;
 }
@@ -74,7 +74,7 @@ body {
   gap: 25px;
 }
 
-/* Application Card */
+
 .app-card {
   background: white;
   border-radius: 12px;
