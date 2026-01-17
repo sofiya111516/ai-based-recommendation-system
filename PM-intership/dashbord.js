@@ -1,4 +1,4 @@
-// ==================== ON LOAD ====================
+
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadRecommendations(user.id);
 });
 
-
-// ==================== SIDEBAR NAVIGATION ====================
-
 function setupSidebarNav() {
   document.getElementById("homeLink").onclick = () => window.location.href = "dashbord.html";
   document.getElementById("applicationsLink").onclick = () => window.location.href = "applications.html";
@@ -31,14 +28,10 @@ function setupSidebarNav() {
   };
 }
 
-
-// ==================== API: LOAD RECOMMENDATIONS ====================
-
 async function loadRecommendations(userId) {
   const container = document.getElementById("recommendedList");
 
   try {
-    // fetch recommendations
     const res = await fetch(`http://127.0.0.1:5000/internships/recommend/${userId}`);
     const data = await res.json();
 
@@ -47,11 +40,9 @@ async function loadRecommendations(userId) {
       return;
     }
 
-    // Fetch already-applied internships
     const appsRes = await fetch(`http://127.0.0.1:5000/applications/${userId}`);
     const appsData = await appsRes.json();
 
-    // extract ids
     const appliedIds = (appsData.applications || []).map(a => a.internship_id);
 
     renderRecommendations(data.recommendations, appliedIds);
@@ -63,8 +54,6 @@ async function loadRecommendations(userId) {
 }
 
 
-// ==================== RENDER CARDS ====================
-
 function renderRecommendations(list, appliedIds = []) {
   const container = document.getElementById("recommendedList");
   container.innerHTML = "";
@@ -74,7 +63,6 @@ function renderRecommendations(list, appliedIds = []) {
     return;
   }
 
-  // show only top 3
   list.slice(0, 3).forEach(intern => {
 
     const alreadyApplied = appliedIds.includes(intern.id);
@@ -108,9 +96,6 @@ function renderRecommendations(list, appliedIds = []) {
 }
 
 
-
-// ==================== VIEW DETAILS HANDLER ====================
-
 function attachViewHandlers() {
 
   document.querySelectorAll(".view-btn").forEach(btn => {
@@ -130,13 +115,11 @@ function attachViewHandlers() {
           return;
         }
 
-        // Save to localStorage
         localStorage.setItem(
           "selectedInternship",
           JSON.stringify(data.internship)
         );
 
-        // Navigate
         window.location.href = "internship-details.html";
 
       } catch (err) {
