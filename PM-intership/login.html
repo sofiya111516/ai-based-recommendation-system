@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | PM Internship Scheme</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="tost.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/ashoka.png" alt="PM Internship Logo">
+  </div>
+  <div class="nav-title">PM Internship Scheme</div>
+</header>
+
+<div class="login-container">
+  <h2>Welcome</h2>
+  <p>Login or create an account to continue</p>
+
+  <div class="tab-buttons">
+    <button class="active">Login</button>
+    <button onclick="window.location.href='signup.html'">Sign Up</button>
+  </div>
+
+  <!-- IMPORTANT: ID added -->
+  <form id="loginForm" class="login-form">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <button type="submit" class="login-btn">Login</button>
+
+      <a href="forgot-password.html" class="forgot">Forgot Password?</a>
+  </form>
+</div>
+
+<!-- External JS (No CSS effect) -->
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+<script src="toast.js"></script>
+<script src="login.js"></script>
+
+
+
+</body>
+</html>

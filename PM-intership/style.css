@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+     font-family: "Poppins", sans-serif;
+}
+
+
+ /* body ki style */
+body{
+
+background-color: #f8f9fb;
+color: #1c1c1c;
+  line-height: 1.6;
+
+}
+
+/* navbar ki style */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+}
+
+.nav-left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo{
+    width: 40px;
+    height: 40px;
+}
+.nav-right a {
+  text-decoration: none;
+  color: #00296b;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-right a:hover {
+  color: #0066ff;
+}
+
+/* herosectin ki styele */
+.hero{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px;
+  gap: 50px;
+  background-color: #f9fafc;
+
+}
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  color: #00296b;
+  margin-bottom: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  line-height: normal;
+
+}
+
+
+
+.hero-text p {
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+ /* button ki styele */
+button {
+  background-color: #004aad;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0066ff;
+}
+
+/* hero image ki style */
+.hero-image{
+  flex: 1;
+
+}
+
+.hero-image img{
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+  /* About section */
+
+  .about{
+    background-color: white;
+    padding: 60px 80px;
+    text-align: center;
+  }
+
+  .about h2{
+      color: #00296b;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+  }
+  .about p {
+  color: #333;
+  max-width: 700px;
+  margin: auto;
+  /* font-size: 1rem; */
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  line-height: 1.8;
+}
+
+/* fotter */
+footer {
+  background-color: #00296b;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+
+
+/* FAQ SECTION */
+.faq-section {
+  padding: 80px 10%;
+  background-color: #f8fafc;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 40px;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* FAQ ITEM */
+.faq-item {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #e8e8e8;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* QUESTION */
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 500;
+  color: #003366;
+  transition: 0.3s;
+}
+
+.faq-question:hover {
+  color: #007bff;
+}
+
+/* ARROW */
+.faq-arrow {
+  transition: transform 0.3s;
+  font-size: 20px;
+}
+
+/* ANSWER */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding: 15px 20px 20px 20px;
+}
+
+.faq-item.active .faq-arrow {
+  transform: rotate(90deg);
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Internship Scheme</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/img1.jpg" alt="Logo" class="logo">
+      <h2>PM Internship Scheme</h2>
+    </div>
+    <nav class="nav-right">
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Unlock Your Potential with the PM Internship Scheme</h1>
+      <p>AI-powered recommendations for your ideal government internship.</p>
+
+      <!-- BUTTON FIXED -->
+      <button id="getStartedBtn" class="cta-btn">Get Started Now</button>
+    </div>
+
+    <div class="hero-image">
+      <img src="images/img.png" alt="internship team">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About the Scheme</h2>
+    <p>
+      The PM Internship Scheme is a prestigious initiative by the Ministry of Corporate Affairs
+      to provide young, talented individuals with unparalleled opportunities to gain hands-on
+      experience in the corporate sector. Our AI-powered platform connects you with the
+      perfect internship to match your skills and aspirations, setting you on a path to a
+      successful career.
+    </p>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="faq-section">
+
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+      <!-- FAQ ITEM 1 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Who is eligible to apply for the PM Internship Scheme?</span>
+          <span class="faq-arrow">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          Students enrolled in undergraduate or postgraduate programs, or recent graduates with relevant skills, are eligible to apply.
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 2 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Is there any stipend for internships?</span>
+          <span class="faq-arrow">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          Yes. Most internships offer a monthly stipend, depending on the organization and duration of the internship.
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 3 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How long is the internship duration?</span>
+          <span class="faq-arrow">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          Typically, internships last between 2 to 6 months, depending on the specific project requirements.
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 4 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I apply for multiple internships at once?</span>
+          <span class="faq-arrow">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          Yes, you may apply for multiple internships. However, acceptance will depend on your skills and eligibility.
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 5 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How does the recommendation system work?</span>
+          <span class="faq-arrow">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          The system analyzes your skills and interests to recommend the most relevant internships tailored to your profile.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PM Internship Scheme. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 1️⃣ Get Started Button
+    document.getElementById("getStartedBtn").addEventListener("click", () => {
+      window.location.href = "login.html";
+    });
+
+    // 2️⃣ FAQ Toggle
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+      item.addEventListener("click", () => {
+
+        // remove active from other items (optional)
+        faqItems.forEach(i => {
+          if (i !== item) i.classList.remove("active");
+        });
+
+        // toggle clicked item
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

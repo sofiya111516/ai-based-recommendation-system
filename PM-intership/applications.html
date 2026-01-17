@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Applications</title>
+  <link rel="stylesheet" href="applications.css">
+  <link rel="stylesheet" href="tost.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/ashoka.png" alt="Logo" />
+      <span>PM Internship Scheme</span>
+    </div>
+    <nav class="nav-links">
+      <a href="dashbord.html">Dashboard</a>
+      <a href="internships.html">Internships</a>
+      <a href="profile.html">Profile</a>
+     <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Applications section -->
+  <section class="applications">
+    <h2>My Applications</h2>
+
+    <div class="application-list" id="applicationList">
+      <p>Loading applications...</p>
+    </div>
+  </section>
+
+ 
+  <!-- Toast Container -->
+<div id="toastContainer"></div>
+<script src="toast.js"></script>
+ <script src="applications.js"></script>
+
+
+
+</body>
+
+</html>

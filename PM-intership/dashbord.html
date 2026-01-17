@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | PM Internship Scheme</title>
+  <link rel="stylesheet" href="dashbord.css" />
+  <link rel="stylesheet" href="tost.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/ashoka.png" alt="logo">
+      <span>PM Internship Scheme</span>
+    </div>
+    <div class="user-info">
+      <img src="images/profile.jpg" alt="User Profile" class="user-pic">
+      <span id="userNameDisplay">Welcome</span>
+    </div>
+  </header>
+
+  <!-- Sidebar + Main Content -->
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <li id="homeLink" class="active">🏠 Home</li>
+        <li id="applicationsLink">📂 My Applications</li>
+        <li id="profileLink">👤 Profile</li>
+        <li id="logoutLink">🚪 Logout</li>
+      </ul>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="main-content">
+      <h2>Recommended Internships</h2>
+      <p style="margin-bottom: 20px; color:#555;">Based on your skills & interests</p>
+
+      <div class="internship-list" id="recommendedList">
+        <p>Loading recommendations...</p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
+  <script src="toast.js"></script>
+  <script src="dashbord.js"></script>
+
+</body>
+</html>
