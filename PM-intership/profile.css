@@ -13,7 +13,6 @@ body {
   background: #f8faff;
 }
 
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -60,7 +59,6 @@ body {
   overflow: hidden;
 }
 
-/* Sidebar */
 .sidebar {
   position: fixed;
   top: 65px;
@@ -92,7 +90,6 @@ body {
   border-left: 4px solid #1e90ff;
 }
 
-/* Profile Section */
 .profile-container {
   margin-left: 260px;
   margin-top: 80px;
