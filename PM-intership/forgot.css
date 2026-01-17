@@ -80,7 +80,6 @@ input {
   text-decoration: underline;
 }
 
-/* Toast */
 #toast {
   visibility: hidden;
   background: #2a9d8f;
