@@ -1,11 +1,8 @@
-// ====================== ELEMENTS ======================
-const detailsCard = document.getElementById("detailsCard");
 
-// Get internship ID from localStorage
+const detailsCard = document.getElementById("detailsCard");
 const selected = JSON.parse(localStorage.getItem("selectedInternship"));
 const internshipId = selected?.id;
 
-// ====================== VALIDATION ======================
 if (!internshipId) {
   detailsCard.innerHTML = `
     <p style="color:red;">⚠️ No internship selected!</p>
@@ -15,8 +12,6 @@ if (!internshipId) {
   loadDetails(internshipId);
 }
 
-
-// ====================== FETCH DETAILS ======================
 async function loadDetails(id) {
   try {
     detailsCard.innerHTML = `<p>Loading details...</p>`;
@@ -34,7 +29,6 @@ async function loadDetails(id) {
 
     const d = data.internship;
 
-    // Render card
     detailsCard.innerHTML = `
       <h3>${d.title}</h3>
       <p><strong>Company:</strong> ${d.company}</p>
@@ -62,8 +56,6 @@ async function loadDetails(id) {
   }
 }
 
-
-// ====================== APPLY FUNCTION ======================
 document.addEventListener("click", async (e) => {
   if (e.target && e.target.id === "applyBtn") {
 
