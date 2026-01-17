@@ -2,8 +2,6 @@ from flask import Blueprint, request, jsonify, current_app
 
 profile = Blueprint("profile", __name__)
 
-
-# ---------------------- GET PROFILE -------------------------
 @profile.route("/get/<int:user_id>", methods=["GET"])
 def get_profile(user_id):
     try:
@@ -40,8 +38,6 @@ def get_profile(user_id):
         print("GET ERROR:", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-# ---------------------- UPDATE PROFILE -------------------------
 @profile.route('/update/<int:user_id>', methods=['PUT'])
 def update_profile(user_id):
 
