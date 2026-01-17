@@ -27,12 +27,10 @@
 .toast.warning { background: #f1c40f; color: black; }
 .toast.info { background: #3498db; }
 
-/* Icons */
 .toast i {
   font-size: 18px;
 }
 
-/* Animations */
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(100%); }
   to { opacity: 1; transform: translateX(0); }
