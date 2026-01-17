@@ -1,4 +1,4 @@
-// ======================= Toast ==========================
+
 
 function showToast(message, type = "success") {
   const toast = document.getElementById("toast");
@@ -14,11 +14,6 @@ function showToast(message, type = "success") {
     toast.classList.remove("show");
   }, 3000);
 }
-
-
-// ====================================================================
-// ======================== LOAD USER DATA =============================
-// ====================================================================
 
 async function loadUserData() {
 
@@ -43,7 +38,6 @@ async function loadUserData() {
 
     const user = data.user;
 
-    // Fill input fields
     document.getElementById("name").value = user.name || "";
     document.getElementById("email").value = user.email || "";
     document.getElementById("phone").value = user.phone || "";
@@ -52,7 +46,7 @@ async function loadUserData() {
     document.getElementById("interest").value = user.interest || "";
     document.getElementById("skills").value = user.skills || "";
 
-    // Update UI
+    
     updateNavbar(user);
     showPreview(user);
 
@@ -64,18 +58,12 @@ async function loadUserData() {
 
 document.addEventListener("DOMContentLoaded", loadUserData);
 
-
-// ====================================================================
-// ======================== UPDATE PROFILE =============================
-// ====================================================================
-
 document.getElementById("profileForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const savedUser = JSON.parse(localStorage.getItem("user"));
   const userId = savedUser.id;
 
-  // Read fields
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phone").value.trim();
@@ -84,7 +72,6 @@ document.getElementById("profileForm").addEventListener("submit", async function
   const interest = document.getElementById("interest").value.trim();
   const skills = document.getElementById("skills").value.trim();
 
-  // Simple validation
   if (!name) return showToast("Name required!", "error");
   if (!email) return showToast("Email required!", "error");
 
@@ -105,7 +92,6 @@ document.getElementById("profileForm").addEventListener("submit", async function
       return;
     }
 
-    // Upload photo
     const photoFile = document.getElementById("profilePhoto").files[0];
     if (photoFile) {
       const formData = new FormData();
@@ -116,7 +102,6 @@ document.getElementById("profileForm").addEventListener("submit", async function
       });
     }
 
-    // Upload resume
     const resumeFile = document.getElementById("resume").files[0];
     if (resumeFile) {
       const formData = new FormData();
@@ -128,8 +113,6 @@ document.getElementById("profileForm").addEventListener("submit", async function
     }
 
     showToast("✔️ Profile Updated Successfully");
-
-    // Reload data from backend
     loadUserData();
 
   } catch (error) {
@@ -138,10 +121,6 @@ document.getElementById("profileForm").addEventListener("submit", async function
   }
 });
 
-
-// ====================================================================
-// ======================== NAVBAR AVATAR ==============================
-// ====================================================================
 
 function updateNavbar(user) {
   const avatar = document.getElementById("userAvatar");
@@ -163,11 +142,6 @@ function updateNavbar(user) {
     "Welcome, " + (user.name || "User");
 }
 
-
-// ====================================================================
-// ======================== PREVIEW UPDATE =============================
-// ====================================================================
-
 function showPreview(user) {
 
   document.getElementById("previewName").innerText = user.name || "";
@@ -178,14 +152,12 @@ function showPreview(user) {
   document.getElementById("previewInterest").innerText = user.interest || "";
   document.getElementById("previewSkills").innerText = user.skills || "";
 
-  // Photo Preview
   if (user.photo) {
     const photoElement = document.getElementById("previewPhoto");
     photoElement.src = `http://127.0.0.1:5000/uploads/photos/${user.photo}?t=${Date.now()}`;
     photoElement.style.display = "block";
   }
 
-  // Resume Preview
   if (user.resume) {
     const resumeLink = document.getElementById("previewResume");
     resumeLink.href = `http://127.0.0.1:5000/uploads/resumes/${user.resume}?t=${Date.now()}`;
