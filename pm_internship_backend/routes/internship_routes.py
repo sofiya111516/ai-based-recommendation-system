@@ -3,8 +3,6 @@ import re
 
 internship = Blueprint("internship", __name__)
 
-
-# ===================== GET ALL INTERNSHIPS =====================
 @internship.route("/", methods=["GET"])
 def get_internships():
     try:
@@ -37,15 +35,12 @@ def get_internships():
         print("INTERNSHIP ERROR:", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-# ===================== RECOMMEND INTERNSHIPS =====================
 @internship.route("/recommend/<int:user_id>", methods=["GET"])
 def recommend_internships(user_id):
     try:
         mysql = current_app.config["MYSQL"]
         cur = mysql.connection.cursor()
 
-        # 1. Get user profile data
         cur.execute("SELECT skills, interest FROM users WHERE id=%s", (user_id,))
         row = cur.fetchone()
 
@@ -60,7 +55,6 @@ def recommend_internships(user_id):
         raw_tokens = re.split(r"[,\s/]+", text)
         keywords = [t for t in raw_tokens if len(t) >= 3]
 
-        # 2. If no keywords, show latest
         if not keywords:
             cur.execute("""
                 SELECT id, title, company, location, duration, stipend, description
@@ -70,7 +64,7 @@ def recommend_internships(user_id):
             data = cur.fetchall()
 
         else:
-            # Full text search
+            
             search_text = " ".join(keywords)
 
             cur.execute("""
@@ -81,7 +75,6 @@ def recommend_internships(user_id):
             """, (search_text,))
             data = cur.fetchall()
 
-            # fallback
             if not data:
                 like = "%" + keywords[0] + "%"
                 cur.execute("""
@@ -112,8 +105,6 @@ def recommend_internships(user_id):
         print("RECOMMEND ERROR:", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-# ===================== GET SINGLE INTERNSHIP =====================
 @internship.route("/details/<int:internship_id>", methods=["GET"])
 def get_internship_by_id(internship_id):
     try:
@@ -148,8 +139,6 @@ def get_internship_by_id(internship_id):
         print("DETAILS ERROR:", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-# ===================== APPLY INTERNSHIP =====================
 @internship.route("/apply", methods=["POST"])
 def apply_internship():
     mysql = current_app.config["MYSQL"]
@@ -164,16 +153,12 @@ def apply_internship():
     try:
         cur = mysql.connection.cursor()
 
-        # Check duplicate
         cur.execute("""
             SELECT id FROM applications 
             WHERE user_id=%s AND internship_id=%s
         """, (user_id, internship_id))
 
         if cur.fetchone():
-            return jsonify({"status": "error", "message": "Already applied"}), 400
-
-        # Insert new
         cur.execute("""
             INSERT INTO applications (user_id, internship_id)
             VALUES (%s, %s)
