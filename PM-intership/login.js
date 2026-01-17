@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
 
-    // Email validation
     const emailPattern =
       /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com)$/;
     if (!emailPattern.test(email)) {
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Password validation
     const passPattern =
       /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
 
@@ -25,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // SEND DATA TO BACKEND
     const response = await fetch("http://127.0.0.1:5000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (response.ok) {
      showToast("Login Successful!");
 
-      // save to localstorage if required
       localStorage.setItem("user", JSON.stringify(result.user));
 
       window.location.href = "profile.html";
