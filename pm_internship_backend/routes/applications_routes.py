@@ -2,15 +2,12 @@ from flask import Blueprint, jsonify, current_app, request
 
 applications = Blueprint("applications", __name__)
 
-
-# ===================== GET APPLICATIONS =====================
 @applications.route("/<int:user_id>", methods=["GET"])
 def get_applications(user_id):
     try:
         mysql = current_app.config["MYSQL"]
         cur = mysql.connection.cursor()
 
-        # UPDATED QUERY: includes internship_id
         cur.execute("""
             SELECT a.id, a.internship_id, i.title, i.company, 
                    a.applied_on, a.status
@@ -40,9 +37,6 @@ def get_applications(user_id):
         print("GET APPLICATIONS ERROR:", e)
         return jsonify({"status": "error", "message": "Server error"}), 500
 
-
-
-# ===================== CANCEL APPLICATION =====================
 @applications.route("/cancel/<int:app_id>", methods=["DELETE"])
 def cancel_application(app_id):
     try:
