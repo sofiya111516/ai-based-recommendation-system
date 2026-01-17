@@ -19,7 +19,6 @@ function showToast(message, type = "info") {
 
   container.appendChild(div);
 
-  // auto remove
   setTimeout(() => {
     div.remove();
   }, 4500);
