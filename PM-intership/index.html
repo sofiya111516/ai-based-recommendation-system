@@ -9,8 +9,6 @@
 </head>
 
 <body>
-
-  <!-- Header Section -->
   <header class="navbar">
     <div class="nav-left">
       <img src="images/img1.jpg" alt="Logo" class="logo">
@@ -23,13 +21,11 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text">
       <h1>Unlock Your Potential with the PM Internship Scheme</h1>
       <p>AI-powered recommendations for your ideal government internship.</p>
 
-      <!-- BUTTON FIXED -->
       <button id="getStartedBtn" class="cta-btn">Get Started Now</button>
     </div>
 
@@ -37,8 +33,7 @@
       <img src="images/img.png" alt="internship team">
     </div>
   </section>
-
-  <!-- About Section -->
+->
   <section id="about" class="about">
     <h2>About the Scheme</h2>
     <p>
@@ -50,14 +45,12 @@
     </p>
   </section>
 
-  <!-- FAQ SECTION -->
   <section id="faq" class="faq-section">
 
     <h2 class="faq-title">Frequently Asked Questions</h2>
 
     <div class="faq-container">
 
-      <!-- FAQ ITEM 1 -->
       <div class="faq-item">
         <div class="faq-question">
           <span>Who is eligible to apply for the PM Internship Scheme?</span>
@@ -68,7 +61,6 @@
         </div>
       </div>
 
-      <!-- FAQ ITEM 2 -->
       <div class="faq-item">
         <div class="faq-question">
           <span>Is there any stipend for internships?</span>
@@ -79,7 +71,6 @@
         </div>
       </div>
 
-      <!-- FAQ ITEM 3 -->
       <div class="faq-item">
         <div class="faq-question">
           <span>How long is the internship duration?</span>
@@ -90,7 +81,6 @@
         </div>
       </div>
 
-      <!-- FAQ ITEM 4 -->
       <div class="faq-item">
         <div class="faq-question">
           <span>Can I apply for multiple internships at once?</span>
@@ -101,7 +91,6 @@
         </div>
       </div>
 
-      <!-- FAQ ITEM 5 -->
       <div class="faq-item">
         <div class="faq-question">
           <span>How does the recommendation system work?</span>
@@ -115,31 +104,23 @@
     </div>
   </section>
 
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 PM Internship Scheme. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
-    // 1️⃣ Get Started Button
     document.getElementById("getStartedBtn").addEventListener("click", () => {
       window.location.href = "login.html";
     });
-
-    // 2️⃣ FAQ Toggle
     const faqItems = document.querySelectorAll(".faq-item");
 
     faqItems.forEach(item => {
       item.addEventListener("click", () => {
 
-        // remove active from other items (optional)
         faqItems.forEach(i => {
           if (i !== item) i.classList.remove("active");
         });
 
-        // toggle clicked item
         item.classList.toggle("active");
       });
     });
